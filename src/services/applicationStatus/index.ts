@@ -4,14 +4,15 @@ import {
   GetApplicationDTO,
   GetApplicationsDTO,
   CreateApplicationDTO,
+  UpdateApplicationDTO,
   DeleteApplicationDTO,
 } from "./DTO";
 
 export const GetApplication = async (params: GetApplicationDTO.IParams) => {
   try {
-    const { id, token } = params;
+    const { prefix, id, token } = params;
     const response = await api.get<GetApplicationDTO.IResponse>(
-      `/candidates/application/${id}`,
+      `/${prefix}/application/${id}`,
       { headers: { Authorization: token } }
     );
 
@@ -39,9 +40,9 @@ export const GetApplication = async (params: GetApplicationDTO.IParams) => {
 
 export const GetApplications = async (params: GetApplicationsDTO.IParams) => {
   try {
-    const { token } = params;
+    const { prefix, token } = params;
     const response = await api.get<GetApplicationsDTO.IResponse>(
-      "/candidates/applications",
+      `/${prefix}/applications`,
       { params, headers: { Authorization: token } }
     );
 
@@ -76,6 +77,38 @@ export const CreateApplication = async (
     const response = await api.post<CreateApplicationDTO.IResponse>(
       "/candidates/application",
       { params: restParams, headers: { Authorization: token } }
+    );
+
+    return {
+      error: false,
+      message: "MESSAGE",
+      code: response.data.code,
+      application: response.data.application,
+    };
+  } catch (error) {
+    if (isAxiosError(error)) {
+      return {
+        error: true,
+        message: "MESSAGE",
+        code: "CODIGO",
+      };
+    }
+    return {
+      error: true,
+      message: "MESSAGE",
+      code: "CODIGO",
+    };
+  }
+};
+
+export const UpdateApplication = async (
+  params: UpdateApplicationDTO.IParams
+) => {
+  try {
+    const { token } = params;
+    const response = await api.patch<UpdateApplicationDTO.IResponse>(
+      "/admins/application",
+      { params, headers: { Authorization: token } }
     );
 
     return {

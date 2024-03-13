@@ -14,6 +14,7 @@ type ApplicationDetail = {
 
 export namespace GetApplicationDTO {
   export interface IParams {
+    prefix: string;
     id: string;
     token: string;
   }
@@ -27,6 +28,7 @@ export namespace GetApplicationDTO {
 
 export namespace GetApplicationsDTO {
   export interface IParams {
+    prefix: string;
     token: string;
   }
   export interface IResponse {
@@ -47,6 +49,20 @@ export namespace GetApplicationsDTO {
 
 export namespace CreateApplicationDTO {
   export interface IParams {
+    hiring_process_stage_id: number;
+    token: string;
+  }
+  export interface IResponse {
+    error: boolean;
+    message: string;
+    code: number;
+    application: Application;
+  }
+}
+
+export namespace UpdateApplicationDTO {
+  export interface IParams {
+    application_id: number;
     hiring_process_stage_id: number;
     token: string;
   }

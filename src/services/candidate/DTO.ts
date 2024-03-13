@@ -35,6 +35,7 @@ type Candidate = {
 
 export namespace GetCandidateDTO {
   export interface IParams {
+    prefix: string;
     id: number;
     token: string;
   }

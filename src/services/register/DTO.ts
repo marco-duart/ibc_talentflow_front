@@ -13,7 +13,7 @@ export namespace RegisterDTO {
   }
 }
 
-export namespace LoginDTO {
+export namespace LoginAPIDTO {
   export interface IParams {
     email: string;
     password: string;

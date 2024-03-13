@@ -2,7 +2,7 @@ import { isAxiosError } from "axios";
 import api from "../api";
 import {
   RegisterDTO,
-  LoginDTO,
+  LoginAPIDTO,
   LoggedUserDTO,
   ForgetPasswordDTO,
   ChangePasswordDTO,
@@ -37,9 +37,9 @@ export const Register = async (params: RegisterDTO.IParams) => {
   }
 };
 
-export const Login = async (params: LoginDTO.IParams) => {
+export const LoginAPI = async (params: LoginAPIDTO.IParams) => {
   try {
-    const response = await api.post<LoginDTO.IResponse>("/users/login", { params });
+    const response = await api.post<LoginAPIDTO.IResponse>("/users/login", { params });
 
     return {
       error: false,

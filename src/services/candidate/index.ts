@@ -6,9 +6,10 @@ export const GetCandidate = async (
   params: GetCandidateDTO.IParams
 ) => {
   try {
-    const { id, token } = params
+    const { prefix, id, token } = params
+    // prefix: 'candidates' | 'admins/candidate'
     const response = await api.get<GetCandidateDTO.IResponse>(
-      `/admins/candidate/${id}`,
+      `/${prefix}/${id}`,
       { headers: { Authorization: token } }
     );
 
