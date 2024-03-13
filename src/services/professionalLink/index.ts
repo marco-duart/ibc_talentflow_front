@@ -1,19 +1,19 @@
 import { isAxiosError } from "axios";
 import api from "../api";
 import {
-  GetProfessionalDTO,
-  GetProfessionalsDTO,
-  CreateProfessionalDTO,
-  UpdateProfessionalDTO,
-  DeleteProfessionalDTO,
+  GetProfessionalLinkDTO,
+  GetProfessionalLinksDTO,
+  CreateProfessionalLinkDTO,
+  UpdateProfessionalLinkDTO,
+  DeleteProfessionalLinkDTO,
 } from "./DTO";
 
-export const GetProfessional = async (
-  params: GetProfessionalDTO.IParams
+export const GetProfessionalLink = async (
+  params: GetProfessionalLinkDTO.IParams
 ) => {
   try {
     const { id, token } = params;
-    const response = await api.get<GetProfessionalDTO.IResponse>(
+    const response = await api.get<GetProfessionalLinkDTO.IResponse>(
       `/candidates/professional/${id}`,
       { headers: { Authorization: token } }
     );
@@ -22,7 +22,7 @@ export const GetProfessional = async (
       error: false,
       message: "MESSAGE",
       code: response.data.code,
-      professional: response.data.professional,
+      professionalLink: response.data.professional,
     };
   } catch (error) {
     if (isAxiosError(error)) {
@@ -40,12 +40,12 @@ export const GetProfessional = async (
   }
 };
 
-export const GetProfessionals = async (
-  params: GetProfessionalsDTO.IParams
+export const GetProfessionalLinks = async (
+  params: GetProfessionalLinksDTO.IParams
 ) => {
   try {
     const { token } = params;
-    const response = await api.get<GetProfessionalsDTO.IResponse>(
+    const response = await api.get<GetProfessionalLinksDTO.IResponse>(
       "/candidates/professionals",
       { params, headers: { Authorization: token } }
     );
@@ -54,7 +54,7 @@ export const GetProfessionals = async (
       error: false,
       message: "MESSAGE",
       code: response.data.code,
-      professionals: response.data.professional,
+      professionalLinks: response.data.professional,
     };
   } catch (error) {
     if (isAxiosError(error)) {
@@ -72,12 +72,12 @@ export const GetProfessionals = async (
   }
 };
 
-export const CreateProfessional = async (
-  params: CreateProfessionalDTO.IParams
+export const CreateProfessionalLink = async (
+  params: CreateProfessionalLinkDTO.IParams
 ) => {
   try {
     const { token, ...restParams } = params;
-    const response = await api.post<CreateProfessionalDTO.IResponse>(
+    const response = await api.post<CreateProfessionalLinkDTO.IResponse>(
       "/candidates/professional",
       { params: restParams, headers: { Authorization: token } }
     );
@@ -86,7 +86,7 @@ export const CreateProfessional = async (
       error: false,
       message: "MESSAGE",
       code: response.data.code,
-      professional: response.data.professional,
+      professionalLink: response.data.professional,
     };
   } catch (error) {
     if (isAxiosError(error)) {
@@ -104,12 +104,12 @@ export const CreateProfessional = async (
   }
 };
 
-export const UpdateProfessional = async (
-  params: UpdateProfessionalDTO.IParams
+export const UpdateProfessionalLink = async (
+  params: UpdateProfessionalLinkDTO.IParams
 ) => {
   try {
     const { id, token, ...restParams } = params;
-    const response = await api.post<UpdateProfessionalDTO.IResponse>(
+    const response = await api.patch<UpdateProfessionalLinkDTO.IResponse>(
       `/candidates/professional/${id}`,
       { params: restParams, headers: { Authorization: token } }
     );
@@ -118,7 +118,7 @@ export const UpdateProfessional = async (
       error: false,
       message: "MESSAGE",
       code: response.data.code,
-      professional: response.data.professional,
+      professionalLink: response.data.professional,
     };
   } catch (error) {
     if (isAxiosError(error)) {
@@ -136,12 +136,12 @@ export const UpdateProfessional = async (
   }
 };
 
-export const DeleteProfessional = async (
-  params: DeleteProfessionalDTO.IParams
+export const DeleteProfessionalLink = async (
+  params: DeleteProfessionalLinkDTO.IParams
 ) => {
   try {
     const { id, token } = params;
-    const response = await api.post<DeleteProfessionalDTO.IResponse>(
+    const response = await api.delete<DeleteProfessionalLinkDTO.IResponse>(
       `/candidates/professional/${id}`,
       { params, headers: { Authorization: token } }
     );
@@ -150,7 +150,7 @@ export const DeleteProfessional = async (
       error: false,
       message: "MESSAGE",
       code: response.data.code,
-      professional: response.data.professional,
+      professionalLink: response.data.professional,
     };
   } catch (error) {
     if (isAxiosError(error)) {

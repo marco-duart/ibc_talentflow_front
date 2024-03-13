@@ -109,7 +109,7 @@ export const UpdateDynamicForm = async (
 ) => {
   try {
     const { id, token, ...restParams } = params;
-    const response = await api.post<UpdateDynamicFormDTO.IResponse>(
+    const response = await api.patch<UpdateDynamicFormDTO.IResponse>(
       `/admins/form/${id}`,
       { params: restParams, headers: { Authorization: token } }
     );
@@ -141,7 +141,7 @@ export const DeleteDynamicForm = async (
 ) => {
   try {
     const { id, token } = params;
-    const response = await api.post<DeleteDynamicFormDTO.IResponse>(
+    const response = await api.delete<DeleteDynamicFormDTO.IResponse>(
       `/admins/form/${id}`,
       { params, headers: { Authorization: token } }
     );

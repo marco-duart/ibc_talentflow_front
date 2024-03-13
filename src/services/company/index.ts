@@ -109,7 +109,7 @@ export const UpdateCompany = async (
 ) => {
   try {
     const { id, token, ...restParams } = params;
-    const response = await api.post<UpdateCompanyDTO.IResponse>(
+    const response = await api.patch<UpdateCompanyDTO.IResponse>(
       `/admins/company/${id}`,
       { params: restParams, headers: { Authorization: token } }
     );
@@ -141,7 +141,7 @@ export const DeleteCompany = async (
 ) => {
   try {
     const { id, token } = params;
-    const response = await api.post<DeleteCompanyDTO.IResponse>(
+    const response = await api.delete<DeleteCompanyDTO.IResponse>(
       `/admins/company/${id}`,
       { params, headers: { Authorization: token } }
     );

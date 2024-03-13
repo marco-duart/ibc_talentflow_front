@@ -109,7 +109,7 @@ export const UpdateJobPosting = async (
 ) => {
   try {
     const { id, token, ...restParams } = params;
-    const response = await api.post<UpdateJobPostingDTO.IResponse>(
+    const response = await api.patch<UpdateJobPostingDTO.IResponse>(
       `/admins/job/${id}`,
       { params: restParams, headers: { Authorization: token } }
     );
@@ -141,7 +141,7 @@ export const DeleteJobPosting = async (
 ) => {
   try {
     const { id, token } = params;
-    const response = await api.post<DeleteJobPostingDTO.IResponse>(
+    const response = await api.delete<DeleteJobPostingDTO.IResponse>(
       `/admins/job/${id}`,
       { params, headers: { Authorization: token } }
     );

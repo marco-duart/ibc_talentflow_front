@@ -109,7 +109,7 @@ export const UpdateDocument = async (
 ) => {
   try {
     const { id, token, ...restParams } = params;
-    const response = await api.post<UpdateDocumentDTO.IResponse>(
+    const response = await api.patch<UpdateDocumentDTO.IResponse>(
       `/candidates/document/${id}`,
       { params: restParams, headers: { Authorization: token } }
     );
@@ -141,7 +141,7 @@ export const DeleteDocument = async (
 ) => {
   try {
     const { id, token } = params;
-    const response = await api.post<DeleteDocumentDTO.IResponse>(
+    const response = await api.delete<DeleteDocumentDTO.IResponse>(
       `/candidates/document/${id}`,
       { params, headers: { Authorization: token } }
     );

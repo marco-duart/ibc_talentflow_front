@@ -109,7 +109,7 @@ export const UpdateDynamicExam = async (
 ) => {
   try {
     const { id, token, ...restParams } = params;
-    const response = await api.post<UpdateDynamicExamDTO.IResponse>(
+    const response = await api.patch<UpdateDynamicExamDTO.IResponse>(
       `/admins/exam/${id}`,
       { params: restParams, headers: { Authorization: token } }
     );
@@ -141,7 +141,7 @@ export const DeleteDynamicExam = async (
 ) => {
   try {
     const { id, token } = params;
-    const response = await api.post<DeleteDynamicExamDTO.IResponse>(
+    const response = await api.delete<DeleteDynamicExamDTO.IResponse>(
       `/admins/exam/${id}`,
       { params, headers: { Authorization: token } }
     );

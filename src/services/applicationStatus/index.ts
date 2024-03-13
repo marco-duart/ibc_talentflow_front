@@ -105,7 +105,7 @@ export const DeleteApplication = async (
 ) => {
   try {
     const { id, token } = params;
-    const response = await api.post<DeleteApplicationDTO.IResponse>(
+    const response = await api.delete<DeleteApplicationDTO.IResponse>(
       `/candidates/application/${id}`,
       { params, headers: { Authorization: token } }
     );

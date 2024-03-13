@@ -1,4 +1,4 @@
-type Social = {
+type SocialLink = {
   id: number
   title: string
   link: string
@@ -7,7 +7,7 @@ type Social = {
   candidate_id: number
 };
 
-export namespace GetSocialDTO {
+export namespace GetSocialLinkDTO {
   export interface IParams {
     id: string;
     token: string;
@@ -16,11 +16,11 @@ export namespace GetSocialDTO {
     error: boolean;
     message: string;
     code: number;
-    social: Social;
+    social: SocialLink;
   }
 }
 
-export namespace GetSocialsDTO {
+export namespace GetSocialLinksDTO {
   export interface IParams {
     token: string;
   }
@@ -28,11 +28,11 @@ export namespace GetSocialsDTO {
     error: boolean;
     message: string;
     code: number;
-    social: Social[];
+    social: SocialLink[];
   }
 }
 
-export namespace CreateSocialDTO {
+export namespace CreateSocialLinkDTO {
   export interface IParams {
     title: string
     link: string
@@ -42,11 +42,11 @@ export namespace CreateSocialDTO {
     error: boolean;
     message: string;
     code: number;
-    social: Social;
+    social: SocialLink;
   }
 }
 
-export namespace UpdateSocialDTO {
+export namespace UpdateSocialLinkDTO {
   export interface IParams {
     title: string
     link: string
@@ -57,11 +57,11 @@ export namespace UpdateSocialDTO {
     error: boolean;
     message: string;
     code: number;
-    social: Social;
+    social: SocialLink;
   }
 }
 
-export namespace DeleteSocialDTO {
+export namespace DeleteSocialLinkDTO {
   export interface IParams {
     id: string;
     token: string;
@@ -70,6 +70,6 @@ export namespace DeleteSocialDTO {
     error: boolean;
     message: string;
     code: number;
-    social: Social;
+    social: SocialLink;
   }
 }

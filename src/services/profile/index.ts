@@ -1,52 +1,18 @@
 import { isAxiosError } from "axios";
 import api from "../api";
 import {
-  GetEmploymentHistoryDTO,
-  GetEmploymentHistoriesDTO,
-  CreateEmploymentHistoryDTO,
-  UpdateEmploymentHistoryDTO,
-  DeleteEmploymentHistoryDTO,
+  GetProfilesDTO,
+  CreateProfileDTO,
+  DeleteProfileDTO,
+  AssignProfileDTO,
+  RemoveProfileDTO,
 } from "./DTO";
 
-export const GetEmploymentHistory = async (
-  params: GetEmploymentHistoryDTO.IParams
-) => {
-  try {
-    const { id, token } = params;
-    const response = await api.get<GetEmploymentHistoryDTO.IResponse>(
-      `/candidates/employment/${id}`,
-      { headers: { Authorization: token } }
-    );
-
-    return {
-      error: false,
-      message: "MESSAGE",
-      code: response.data.code,
-      employmentHistory: response.data.employment,
-    };
-  } catch (error) {
-    if (isAxiosError(error)) {
-      return {
-        error: true,
-        message: "MESSAGE",
-        code: "CODIGO",
-      };
-    }
-    return {
-      error: true,
-      message: "MESSAGE",
-      code: "CODIGO",
-    };
-  }
-};
-
-export const GetEmploymentHistories = async (
-  params: GetEmploymentHistoriesDTO.IParams
-) => {
+export const GetProfiles = async (params: GetProfilesDTO.IParams) => {
   try {
     const { token } = params;
-    const response = await api.get<GetEmploymentHistoriesDTO.IResponse>(
-      "/candidates/employments",
+    const response = await api.get<GetProfilesDTO.IResponse>(
+      "/admins/profiles",
       { params, headers: { Authorization: token } }
     );
 
@@ -54,7 +20,7 @@ export const GetEmploymentHistories = async (
       error: false,
       message: "MESSAGE",
       code: response.data.code,
-      EmploymentHistories: response.data.employment,
+      profiles: response.data.profile,
     };
   } catch (error) {
     if (isAxiosError(error)) {
@@ -72,13 +38,11 @@ export const GetEmploymentHistories = async (
   }
 };
 
-export const CreateEmploymentHistory = async (
-  params: CreateEmploymentHistoryDTO.IParams
-) => {
+export const CreateProfile = async (params: CreateProfileDTO.IParams) => {
   try {
     const { token, ...restParams } = params;
-    const response = await api.post<CreateEmploymentHistoryDTO.IResponse>(
-      "/candidates/employment",
+    const response = await api.post<CreateProfileDTO.IResponse>(
+      "/admins/profile",
       { params: restParams, headers: { Authorization: token } }
     );
 
@@ -86,7 +50,7 @@ export const CreateEmploymentHistory = async (
       error: false,
       message: "MESSAGE",
       code: response.data.code,
-      employmentHistory: response.data.employment,
+      profile: response.data.profile,
     };
   } catch (error) {
     if (isAxiosError(error)) {
@@ -104,45 +68,11 @@ export const CreateEmploymentHistory = async (
   }
 };
 
-export const UpdateEmploymentHistory = async (
-  params: UpdateEmploymentHistoryDTO.IParams
-) => {
-  try {
-    const { id, token, ...restParams } = params;
-    const response = await api.patch<UpdateEmploymentHistoryDTO.IResponse>(
-      `/candidates/employment/${id}`,
-      { params: restParams, headers: { Authorization: token } }
-    );
-
-    return {
-      error: false,
-      message: "MESSAGE",
-      code: response.data.code,
-      employmentHistory: response.data.employment,
-    };
-  } catch (error) {
-    if (isAxiosError(error)) {
-      return {
-        error: true,
-        message: "MESSAGE",
-        code: "CODIGO",
-      };
-    }
-    return {
-      error: true,
-      message: "MESSAGE",
-      code: "CODIGO",
-    };
-  }
-};
-
-export const DeleteEmploymentHistory = async (
-  params: DeleteEmploymentHistoryDTO.IParams
-) => {
+export const DeleteProfile = async (params: DeleteProfileDTO.IParams) => {
   try {
     const { id, token } = params;
-    const response = await api.delete<DeleteEmploymentHistoryDTO.IResponse>(
-      `/candidates/employment/${id}`,
+    const response = await api.delete<DeleteProfileDTO.IResponse>(
+      `/admins/profile/${id}`,
       { params, headers: { Authorization: token } }
     );
 
@@ -150,7 +80,67 @@ export const DeleteEmploymentHistory = async (
       error: false,
       message: "MESSAGE",
       code: response.data.code,
-      employmentHistory: response.data.employment,
+      profile: response.data.profile,
+    };
+  } catch (error) {
+    if (isAxiosError(error)) {
+      return {
+        error: true,
+        message: "MESSAGE",
+        code: "CODIGO",
+      };
+    }
+    return {
+      error: true,
+      message: "MESSAGE",
+      code: "CODIGO",
+    };
+  }
+};
+
+export const AssignProfile = async (params: AssignProfileDTO.IParams) => {
+  try {
+    const { token, ...restParams } = params;
+    const response = await api.post<AssignProfileDTO.IResponse>(
+      "/admins/candidate-profile",
+      { params: restParams, headers: { Authorization: token } }
+    );
+
+    return {
+      error: false,
+      message: "MESSAGE",
+      code: response.data.code,
+      candidateProfile: response.data.candidateProfile,
+    };
+  } catch (error) {
+    if (isAxiosError(error)) {
+      return {
+        error: true,
+        message: "MESSAGE",
+        code: "CODIGO",
+      };
+    }
+    return {
+      error: true,
+      message: "MESSAGE",
+      code: "CODIGO",
+    };
+  }
+};
+
+export const RemoveProfile = async (params: RemoveProfileDTO.IParams) => {
+  try {
+    const { token, ...restParams } = params;
+    const response = await api.delete<AssignProfileDTO.IResponse>(
+      "/admins/candidate-profile",
+      { params: restParams, headers: { Authorization: token } }
+    );
+
+    return {
+      error: false,
+      message: "MESSAGE",
+      code: response.data.code,
+      candidateProfile: response.data.candidateProfile,
     };
   } catch (error) {
     if (isAxiosError(error)) {

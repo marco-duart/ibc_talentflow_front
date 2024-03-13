@@ -1,19 +1,19 @@
 import { isAxiosError } from "axios";
 import api from "../api";
 import {
-  GetSocialDTO,
-  GetSocialsDTO,
-  CreateSocialDTO,
-  UpdateSocialDTO,
-  DeleteSocialDTO,
+  GetSocialLinkDTO,
+  GetSocialLinksDTO,
+  CreateSocialLinkDTO,
+  UpdateSocialLinkDTO,
+  DeleteSocialLinkDTO,
 } from "./DTO";
 
-export const GetSocial = async (
-  params: GetSocialDTO.IParams
+export const GetSocialLink = async (
+  params: GetSocialLinkDTO.IParams
 ) => {
   try {
     const { id, token } = params;
-    const response = await api.get<GetSocialDTO.IResponse>(
+    const response = await api.get<GetSocialLinkDTO.IResponse>(
       `/candidates/social/${id}`,
       { headers: { Authorization: token } }
     );
@@ -22,7 +22,7 @@ export const GetSocial = async (
       error: false,
       message: "MESSAGE",
       code: response.data.code,
-      social: response.data.social,
+      socialLink: response.data.social,
     };
   } catch (error) {
     if (isAxiosError(error)) {
@@ -40,12 +40,12 @@ export const GetSocial = async (
   }
 };
 
-export const GetSocials = async (
-  params: GetSocialsDTO.IParams
+export const GetSocialLinks = async (
+  params: GetSocialLinksDTO.IParams
 ) => {
   try {
     const { token } = params;
-    const response = await api.get<GetSocialsDTO.IResponse>(
+    const response = await api.get<GetSocialLinksDTO.IResponse>(
       "/candidates/socials",
       { params, headers: { Authorization: token } }
     );
@@ -54,7 +54,7 @@ export const GetSocials = async (
       error: false,
       message: "MESSAGE",
       code: response.data.code,
-      socials: response.data.social,
+      socialLinks: response.data.social,
     };
   } catch (error) {
     if (isAxiosError(error)) {
@@ -72,12 +72,12 @@ export const GetSocials = async (
   }
 };
 
-export const CreateSocial = async (
-  params: CreateSocialDTO.IParams
+export const CreateSocialLink = async (
+  params: CreateSocialLinkDTO.IParams
 ) => {
   try {
     const { token, ...restParams } = params;
-    const response = await api.post<CreateSocialDTO.IResponse>(
+    const response = await api.post<CreateSocialLinkDTO.IResponse>(
       "/candidates/social",
       { params: restParams, headers: { Authorization: token } }
     );
@@ -86,7 +86,7 @@ export const CreateSocial = async (
       error: false,
       message: "MESSAGE",
       code: response.data.code,
-      social: response.data.social,
+      socialLink: response.data.social,
     };
   } catch (error) {
     if (isAxiosError(error)) {
@@ -104,12 +104,12 @@ export const CreateSocial = async (
   }
 };
 
-export const UpdateSocial = async (
-  params: UpdateSocialDTO.IParams
+export const UpdateSocialLink = async (
+  params: UpdateSocialLinkDTO.IParams
 ) => {
   try {
     const { id, token, ...restParams } = params;
-    const response = await api.post<UpdateSocialDTO.IResponse>(
+    const response = await api.patch<UpdateSocialLinkDTO.IResponse>(
       `/candidates/social/${id}`,
       { params: restParams, headers: { Authorization: token } }
     );
@@ -118,7 +118,7 @@ export const UpdateSocial = async (
       error: false,
       message: "MESSAGE",
       code: response.data.code,
-      social: response.data.social,
+      socialLink: response.data.social,
     };
   } catch (error) {
     if (isAxiosError(error)) {
@@ -136,12 +136,12 @@ export const UpdateSocial = async (
   }
 };
 
-export const DeleteSocial = async (
-  params: DeleteSocialDTO.IParams
+export const DeleteSocialLink = async (
+  params: DeleteSocialLinkDTO.IParams
 ) => {
   try {
     const { id, token } = params;
-    const response = await api.post<DeleteSocialDTO.IResponse>(
+    const response = await api.delete<DeleteSocialLinkDTO.IResponse>(
       `/candidates/social/${id}`,
       { params, headers: { Authorization: token } }
     );
@@ -150,7 +150,7 @@ export const DeleteSocial = async (
       error: false,
       message: "MESSAGE",
       code: response.data.code,
-      social: response.data.social,
+      socialLink: response.data.social,
     };
   } catch (error) {
     if (isAxiosError(error)) {

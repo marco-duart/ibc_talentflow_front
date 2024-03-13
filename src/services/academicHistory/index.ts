@@ -109,7 +109,7 @@ export const UpdateAcademicHistory = async (
 ) => {
   try {
     const { id, token, ...restParams } = params;
-    const response = await api.post<UpdateAcademicHistoryDTO.IResponse>(
+    const response = await api.patch<UpdateAcademicHistoryDTO.IResponse>(
       `/candidates/academic/${id}`,
       { params: restParams, headers: { Authorization: token } }
     );
@@ -141,7 +141,7 @@ export const DeleteAcademicHistory = async (
 ) => {
   try {
     const { id, token } = params;
-    const response = await api.post<DeleteAcademicHistoryDTO.IResponse>(
+    const response = await api.delete<DeleteAcademicHistoryDTO.IResponse>(
       `/candidates/academic/${id}`,
       { params, headers: { Authorization: token } }
     );

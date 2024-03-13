@@ -1,37 +1,13 @@
-type Skill = {
-  id: number;
-  title: string;
-  created_at: Date;
-  updated_at: Date;
+type ProfessionalLink = {
+  id: number
+  title: string
+  link: string
+  created_at: Date
+  updated_at: Date
+  candidate_id: number
 };
 
-export namespace GetSkillsDTO {
-  export interface IParams {
-    prefix: string;
-    token: string;
-  }
-  export interface IResponse {
-    error: boolean;
-    message: string;
-    code: number;
-    skill: Skill[];
-  }
-}
-
-export namespace CreateSkillDTO {
-  export interface IParams {
-    title: string;
-    token: string;
-  }
-  export interface IResponse {
-    error: boolean;
-    message: string;
-    code: number;
-    skill: Skill;
-  }
-}
-
-export namespace DeleteSkillDTO {
+export namespace GetProfessionalLinkDTO {
   export interface IParams {
     id: string;
     token: string;
@@ -40,24 +16,52 @@ export namespace DeleteSkillDTO {
     error: boolean;
     message: string;
     code: number;
-    skill: Skill;
+    professional: ProfessionalLink;
   }
 }
 
-export namespace AssignSkillDTO {
+export namespace GetProfessionalLinksDTO {
   export interface IParams {
-    candidate_skills_attributes: { skill_id: number }[];
     token: string;
   }
   export interface IResponse {
     error: boolean;
     message: string;
     code: number;
-    skill: Skill;
+    professional: ProfessionalLink[];
   }
 }
 
-export namespace RemoveSkillDTO {
+export namespace CreateProfessionalLinkDTO {
+  export interface IParams {
+    title: string
+    link: string
+    token: string;
+  }
+  export interface IResponse {
+    error: boolean;
+    message: string;
+    code: number;
+    professional: ProfessionalLink;
+  }
+}
+
+export namespace UpdateProfessionalLinkDTO {
+  export interface IParams {
+    title: string
+    link: string
+    id: string;
+    token: string;
+  }
+  export interface IResponse {
+    error: boolean;
+    message: string;
+    code: number;
+    professional: ProfessionalLink;
+  }
+}
+
+export namespace DeleteProfessionalLinkDTO {
   export interface IParams {
     id: string;
     token: string;
@@ -66,6 +70,6 @@ export namespace RemoveSkillDTO {
     error: boolean;
     message: string;
     code: number;
-    skill: Skill;
+    professional: ProfessionalLink;
   }
 }

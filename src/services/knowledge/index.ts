@@ -4,15 +4,17 @@ import {
   GetKnowledgesDTO,
   CreateKnowledgeDTO,
   DeleteKnowledgeDTO,
+  AssignKnowledgeDTO,
+  RemoveKnowledgeDTO,
 } from "./DTO";
 
 export const GetKnowledges = async (
   params: GetKnowledgesDTO.IParams
 ) => {
   try {
-    const { token } = params;
+    const { prefix, token } = params;
     const response = await api.get<GetKnowledgesDTO.IResponse>(
-      "/candidates/knowledges",
+      `/${prefix}/knowledges`,
       { params, headers: { Authorization: token } }
     );
 
@@ -44,7 +46,7 @@ export const CreateKnowledge = async (
   try {
     const { token, ...restParams } = params;
     const response = await api.post<CreateKnowledgeDTO.IResponse>(
-      "/candidates/knowledge",
+      "/admins/knowledge",
       { params: restParams, headers: { Authorization: token } }
     );
 
@@ -75,7 +77,71 @@ export const DeleteKnowledge = async (
 ) => {
   try {
     const { id, token } = params;
-    const response = await api.post<DeleteKnowledgeDTO.IResponse>(
+    const response = await api.delete<DeleteKnowledgeDTO.IResponse>(
+      `/admins/knowledge/${id}`,
+      { params, headers: { Authorization: token } }
+    );
+
+    return {
+      error: false,
+      message: "MESSAGE",
+      code: response.data.code,
+      knowledge: response.data.knowledge,
+    };
+  } catch (error) {
+    if (isAxiosError(error)) {
+      return {
+        error: true,
+        message: "MESSAGE",
+        code: "CODIGO",
+      };
+    }
+    return {
+      error: true,
+      message: "MESSAGE",
+      code: "CODIGO",
+    };
+  }
+};
+
+export const AssignKnowledge = async (
+  params: AssignKnowledgeDTO.IParams
+) => {
+  try {
+    const { token, ...restParams } = params;
+    const response = await api.post<AssignKnowledgeDTO.IResponse>(
+      "/candidates/knowledge",
+      { params: restParams, headers: { Authorization: token } }
+    );
+
+    return {
+      error: false,
+      message: "MESSAGE",
+      code: response.data.code,
+      knowledge: response.data.knowledge,
+    };
+  } catch (error) {
+    if (isAxiosError(error)) {
+      return {
+        error: true,
+        message: "MESSAGE",
+        code: "CODIGO",
+      };
+    }
+    return {
+      error: true,
+      message: "MESSAGE",
+      code: "CODIGO",
+    };
+  }
+};
+
+export const RemoveKnowledge = async (
+  params: RemoveKnowledgeDTO.IParams
+) => {
+  try {
+    const { id, token } = params;
+    const response = await api.delete<RemoveKnowledgeDTO.IResponse>(
       `/candidates/knowledge/${id}`,
       { params, headers: { Authorization: token } }
     );

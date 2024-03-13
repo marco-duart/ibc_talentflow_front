@@ -1,26 +1,20 @@
-type Professional = {
+type Profile = {
   id: number
   title: string
-  link: string
   created_at: Date
   updated_at: Date
-  candidate_id: number
 };
 
-export namespace GetProfessionalDTO {
-  export interface IParams {
-    id: string;
-    token: string;
-  }
-  export interface IResponse {
-    error: boolean;
-    message: string;
-    code: number;
-    professional: Professional;
-  }
+type CandidateProfile = {
+  id: number
+  candidate_id: number
+  profile_id: number
+  created_at: Date
+  updated_at: Date
 }
 
-export namespace GetProfessionalsDTO {
+
+export namespace GetProfilesDTO {
   export interface IParams {
     token: string;
   }
@@ -28,40 +22,24 @@ export namespace GetProfessionalsDTO {
     error: boolean;
     message: string;
     code: number;
-    professional: Professional[];
+    profile: Profile[];
   }
 }
 
-export namespace CreateProfessionalDTO {
+export namespace CreateProfileDTO {
   export interface IParams {
     title: string
-    link: string
     token: string;
   }
   export interface IResponse {
     error: boolean;
     message: string;
     code: number;
-    professional: Professional;
+    profile: Profile;
   }
 }
 
-export namespace UpdateProfessionalDTO {
-  export interface IParams {
-    title: string
-    link: string
-    id: string;
-    token: string;
-  }
-  export interface IResponse {
-    error: boolean;
-    message: string;
-    code: number;
-    professional: Professional;
-  }
-}
-
-export namespace DeleteProfessionalDTO {
+export namespace DeleteProfileDTO {
   export interface IParams {
     id: string;
     token: string;
@@ -70,6 +48,34 @@ export namespace DeleteProfessionalDTO {
     error: boolean;
     message: string;
     code: number;
-    professional: Professional;
+    profile: Profile;
+  }
+}
+
+export namespace AssignProfileDTO {
+  export interface IParams {
+    user_id: number
+    profile_id: number
+    token: string;
+  }
+  export interface IResponse {
+    error: boolean;
+    message: string;
+    code: number;
+    candidateProfile: CandidateProfile;
+  }
+}
+
+export namespace RemoveProfileDTO {
+  export interface IParams {
+    user_id: number
+    candidate_profile_id: number
+    token: string;
+  }
+  export interface IResponse {
+    error: boolean;
+    message: string;
+    code: number;
+    candidateProfile: CandidateProfile;
   }
 }
