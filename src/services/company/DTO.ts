@@ -1,15 +1,15 @@
-type Document = {
-  id: string
-  document_name: string
-  document_number: string
-  issue_date: Date
-  location: string
+type Company = {
+  id: number
+  company_name: string
+  cnpj: string
+  sector: string
+  company_size: number 
+  company_location: string
   created_at: Date
   updated_at: Date
-  candidate_id: number
 };
 
-export namespace GetDocumentDTO {
+export namespace GetCompanyDTO {
   export interface IParams {
     id: string;
     token: string;
@@ -18,11 +18,11 @@ export namespace GetDocumentDTO {
     error: boolean;
     message: string;
     code: number;
-    document: Document;
+    company: Company;
   }
 }
 
-export namespace GetDocumentsDTO {
+export namespace GetCompaniesDTO {
   export interface IParams {
     token: string;
   }
@@ -30,33 +30,34 @@ export namespace GetDocumentsDTO {
     error: boolean;
     message: string;
     code: number;
-    document: Document[];
+    companies: Company[];
   }
 }
 
-export namespace CreateDocumentDTO {
+export namespace CreateCompanyDTO {
   export interface IParams {
-    document_name: string
-    document_number: string
-    issue_date: Date
-    location: string
-    image: File
+    company_name: string
+    cnpj: string
+    sector: string
+    company_size: number
+    company_location: string
     token: string;
   }
   export interface IResponse {
     error: boolean;
     message: string;
     code: number;
-    document: Document;
+    company: Company;
   }
 }
 
-export namespace UpdateDocumentDTO {
+export namespace UpdateCompanyDTO {
   export interface IParams {
-    document_name: string
-    document_number: string
-    issue_date: Date
-    location: string
+    company_name?: string;
+    cnpj?: string;
+    sector?: string;
+    company_size?: number;
+    company_location?: string;
     id: string;
     token: string;
   }
@@ -64,11 +65,11 @@ export namespace UpdateDocumentDTO {
     error: boolean;
     message: string;
     code: number;
-    document: Document;
+    company: Company;
   }
 }
 
-export namespace DeleteDocumentDTO {
+export namespace DeleteCompanyDTO {
   export interface IParams {
     id: string;
     token: string;
@@ -77,6 +78,6 @@ export namespace DeleteDocumentDTO {
     error: boolean;
     message: string;
     code: number;
-    document: Document;
+    company: Company;
   }
 }
