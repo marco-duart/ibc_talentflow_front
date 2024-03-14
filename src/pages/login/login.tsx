@@ -1,16 +1,19 @@
-import TalentflowLogo from "../../components/shared/TalentflowLogo";
+import LoginForm from "../../components/forms/loginForm";
+import DefaultCard from "../../components/shared/cards/defaultCard";
+import TalentflowLogo from "../../components/shared/talentflowLogo";
 import * as Styled from "./styles";
 
 const Login = () => {
   return (
     <>
-      <Styled.LoginPageStyled>
-        <Styled.LoginCardStyled>
-          <Styled.TalentflowLogoStyled>
+      <Styled.LoginPageStyle>
+        <DefaultCard>
+          <Styled.TalentflowLogoStyle>
             <TalentflowLogo />
-          </Styled.TalentflowLogoStyled>
-        </Styled.LoginCardStyled>
-      </Styled.LoginPageStyled>
+          </Styled.TalentflowLogoStyle>
+          <LoginForm />
+        </DefaultCard>
+      </Styled.LoginPageStyle>
     </>
   );
 };

@@ -1,8 +1,8 @@
 const TalentflowLogo = (props: any) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={573.4}
-    height={136.44}
+    width={550}
+    height={120}
     preserveAspectRatio="xMidYMid"
     style={{
       background: "0 0",
@@ -19,8 +19,8 @@ const TalentflowLogo = (props: any) => (
         y2={0.5}
         gradientUnits="objectBoundingBox"
       >
-        <stop offset={0} stopColor="#42bbff" />
-        <stop offset={1} stopColor="#4a71ff" />
+        <stop offset={0} stopColor="#40c6fe" />
+        <stop offset={1} stopColor="#466dfb" />
       </linearGradient>
       <filter
         id="editing-gradow-filter"
@@ -29,7 +29,7 @@ const TalentflowLogo = (props: any) => (
         x="-100%"
         y="-100%"
       >
-        <feFlood floodColor="#dadad7" result="flood" />
+        <feFlood floodColor="#080f29" result="flood" />
         <feComposite
           in="flood"
           in2="SourceAlpha"
