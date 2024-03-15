@@ -18,3 +18,10 @@ export const TalentflowLogoStyle = styled.div`
   margin-left: -275px;
   top: -150px;
 `
+
+export const FooterLoginPageStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
