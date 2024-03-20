@@ -1,14 +1,13 @@
-import { Link } from "react-router-dom";
-import LoginForm from "../../components/forms/loginForm";
-import DefaultCard from "../../components/shared/cards/defaultCard";
-import TalentflowLogo from "../../components/shared/talentflowLogo";
+import LoginForm from "../../components/forms/login-form";
+import LoginCard from "../../components/shared/cards/login-card";
+import TalentflowLogo from "../../components/shared/talentflow-logo";
 import * as S from "./styles";
 
 const Login = () => {
   return (
     <>
       <S.LoginPageStyle>
-        <DefaultCard>
+        <LoginCard>
           <S.TalentflowLogoStyle>
             <TalentflowLogo />
           </S.TalentflowLogoStyle>
@@ -16,10 +15,10 @@ const Login = () => {
           <S.FooterLoginPageStyle>
             <small>Não tem cadastro?</small>
             <div>
-              <Link to="ROTA">Cadastre-se aqui</Link> | <Link to="ROTA">Esqueci a senha</Link>
+              <S.LinkLoginPageStyle to="/register">Cadastre-se aqui</S.LinkLoginPageStyle> | <S.LinkLoginPageStyle to="ROTA">Esqueci a senha</S.LinkLoginPageStyle>
             </div>
           </S.FooterLoginPageStyle>
-        </DefaultCard>
+        </LoginCard>
       </S.LoginPageStyle>
     </>
   );

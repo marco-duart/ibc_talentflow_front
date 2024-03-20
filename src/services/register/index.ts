@@ -14,7 +14,7 @@ import {
 
 export const Register = async (params: RegisterDTO.IParams) => {
   try {
-    const response = await api.post<RegisterDTO.IResponse>("/users", { params });
+    const response = await api.post<RegisterDTO.IResponse>("/users", params);
 
     return {
       error: false,
@@ -39,7 +39,7 @@ export const Register = async (params: RegisterDTO.IParams) => {
 
 export const LoginAPI = async (params: LoginAPIDTO.IParams) => {
   try {
-    const response = await api.post<LoginAPIDTO.IResponse>("/users/login", { params });
+    const response = await api.post<LoginAPIDTO.IResponse>("/users/login", params);
 
     return {
       error: false,
@@ -91,7 +91,7 @@ export const LoggedUser = async (params: LoggedUserDTO.IParams) => {
 
 export const ForgetPassword = async (params: ForgetPasswordDTO.IParams) => {
   try {
-    const response = await api.post<ForgetPasswordDTO.IResponse>('/users/forget-password', { params })
+    const response = await api.post<ForgetPasswordDTO.IResponse>('/users/forget-password', params)
 
     return {
       error: false,
@@ -116,7 +116,7 @@ export const ForgetPassword = async (params: ForgetPasswordDTO.IParams) => {
 
 export const ChangePassword = async (params: ChangePasswordDTO.IParams) => {
   try {
-    const response = await api.post<ChangePasswordDTO.IResponse>('/users/reset-password', { params })
+    const response = await api.post<ChangePasswordDTO.IResponse>('/users/reset-password', params)
 
     return {
       error: false,
@@ -141,7 +141,7 @@ export const ChangePassword = async (params: ChangePasswordDTO.IParams) => {
 
 export const GetToken = async (params: GetTokenDTO.IParams) => {
   try {
-    const response = await api.post<GetTokenDTO.IResponse>('/users/resend-token', { params })
+    const response = await api.post<GetTokenDTO.IResponse>('/users/resend-token', params)
 
     return {
       error: false,
@@ -192,7 +192,7 @@ export const ConfirmAccount = async (params: ConfirmAccountDTO.IParams) => {
 
 export const EmailAvailability = async (params: EmailAvailabilityDTO.IParams) => {
   try {
-    const response = await api.post<EmailAvailabilityDTO.IResponse>('/users/email', { params })
+    const response = await api.post<EmailAvailabilityDTO.IResponse>('/users/email', params)
 
     return {
       error: false,
@@ -217,7 +217,7 @@ export const EmailAvailability = async (params: EmailAvailabilityDTO.IParams) =>
 
 export const CpfAvailability = async (params: CpfAvailabilityDTO.IParams) => {
   try {
-    const response = await api.post<CpfAvailabilityDTO.IResponse>('/users/cpf', { params })
+    const response = await api.post<CpfAvailabilityDTO.IResponse>('/users/cpf', params)
 
     return {
       error: false,

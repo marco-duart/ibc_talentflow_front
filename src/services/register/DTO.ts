@@ -4,7 +4,7 @@ export namespace RegisterDTO {
     cpf: string;
     email: string;
     password: string;
-    photo: File;
+    photo?: File;
   }
   export interface IResponse {
     error: boolean;

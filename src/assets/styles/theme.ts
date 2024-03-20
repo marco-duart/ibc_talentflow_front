@@ -69,7 +69,7 @@ const light = {
       lg: "250px",
       xl: "350px",
       xxl: "450px",
-      xxxl: "550px",
+      xxxl: "600px",
     },
     forms: {
       xsm: "400px",
@@ -104,7 +104,7 @@ const light = {
       lg: "250px",
       xl: "350px",
       xxl: "450px",
-      xxxl: "550px",
+      xxxl: "600px",
     },
     forms: {
       xsm: "300px",

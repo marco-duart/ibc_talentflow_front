@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const DefaultButtonStyle = styled.button`
+export const BaseButtonStyle = styled.button`
   width: ${(props) => props.theme.widths.buttons.xxxl};
   height: ${(props) => props.theme.heights.buttons.sm};
   background-color: ${(props) => props.theme.colors.lightBlue100};

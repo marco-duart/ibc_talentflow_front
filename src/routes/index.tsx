@@ -1,14 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BaseLayout from "../components/baseLayout";
 import Login from "../pages/login/login";
+import Register from "../pages/register/register";
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        {/* <Route path="/" element={<Register />} />
-        <Route path="/" element={<PasswordRecovery />} />
+        <Route path="/register" element={<Register />} />
+        {/* <Route path="/" element={<PasswordRecovery />} />
         <Route path="/admin" element={<BaseLayout />}>
           <Route path="/" element={<Dashboard />} />
           <Route path="/" element={<CNPJ />} />
@@ -28,7 +29,7 @@ export default function Router() {
           <Route path="/" element={<Notificações />} />
           <Route path="/" element={<QuemSomos />} />
           <Route path="/" element={<Suporte />} />
-        </Route> */}
+        </Route>*/}
       </Routes>
     </BrowserRouter>
   );

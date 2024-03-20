@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import backgroundImage from '../../assets/image/BG.jpg'
-import { Link } from "react-router-dom";
 
-export const LoginPageStyle = styled.div`
+export const RegisterPageStyle = styled.div`
   width: 100vw;
   height: 100vh;
   position: relative;
@@ -20,13 +19,9 @@ export const TalentflowLogoStyle = styled.div`
   top: -150px;
 `
 
-export const FooterLoginPageStyle = styled.div`
+export const FooterRegisterPageStyle = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`
-
-export const LinkLoginPageStyle = styled(Link)`
-  font-size: ${props => props.theme.fontSizes.xsm};
 `
