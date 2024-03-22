@@ -11,6 +11,7 @@ import BaseButton from "../shared/buttons/base-button";
 import { LoginAPI } from "../../services/register";
 //STYLES
 import * as S from "./styles";
+import { EyeFill, EyeSlashFill } from "@styled-icons/bootstrap"
 //UTILS
 import { FORM_MESSAGE } from "../../utils/enums/form-message";
 
@@ -27,9 +28,9 @@ const loginFormSchema = z.object({
 type loginFormData = z.infer<typeof loginFormSchema>;
 
 const LoginForm = () => {
-  const [values, setValue] = useLocalStorage("remenber", false);
-  const [output, setOutput] = useState("");
-  //const navigate = useNavigate();
+  // const [values, setValue] = useLocalStorage("remenber", false);
+  const [passwordIsOpen, setPasswordIsOpen] = useState(false)
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -41,19 +42,23 @@ const LoginForm = () => {
   const handleLogin = async (data: loginFormData) => {
     const { remember, ...restData } = data
     
-    handleLocalStorage(remember) // Usar na Homepage após logado
+    // handleLocalStorage(remember)
 
     const result = await LoginAPI(restData);
 
     if (!result.error) {
-      //navigate(" ENTIDADE /home")
+      navigate(" ENTIDADE /home")
     } else {
-      // erro
+      console.log("Deu ruim!")
     }
   };
 
-  const handleLocalStorage = (remember: boolean) => {
-    setValue("remember", remember)
+  // const handleLocalStorage = (remember: boolean) => {
+  //   setValue("remember", remember)
+  // }
+
+  const handlePassword = () => {
+    setPasswordIsOpen(!passwordIsOpen)
   }
 
   return (
@@ -63,16 +68,19 @@ const LoginForm = () => {
         <label htmlFor="email" hidden>
           E-mail
         </label>
-        <S.BaseInputFormStyle {...register("email")} type="text" placeholder="Email" />
+        <S.BaseInputFormStyle {...register("email")} type="text" placeholder="Email" error={errors.email ? true : false}/>
         {errors.email && <S.BaseSmallFormStyle>{errors.email.message}</S.BaseSmallFormStyle>}
       </div>
-      <div className="first-section">
+      <S.PasswordSectionFormStyle>
         <label htmlFor="password" hidden>
           Senha
         </label>
-        <S.BaseInputFormStyle {...register("password")} type="password" placeholder="Senha" />
+        <S.BaseInputFormStyle {...register("password")} type={passwordIsOpen ? "text" : "password"} placeholder="Senha" error={errors.password ? true : false}/>
+        <div onClick={() => handlePassword()}>
+          {passwordIsOpen ? <EyeFill /> : <EyeSlashFill />}
+        </div>
         {errors.password && <S.BaseSmallFormStyle>{errors.password.message}</S.BaseSmallFormStyle>}
-      </div>
+      </S.PasswordSectionFormStyle>
       <div className="second-section">
         <label htmlFor="remember">Lembrar</label>
         <S.BaseCheckboxFormStyle {...register("remember")} type="checkbox" />

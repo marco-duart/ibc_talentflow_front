@@ -9,26 +9,18 @@ import { useNavigate } from "react-router-dom";
 import { cpf } from "cpf-cnpj-validator";
 
 //COMPONENTS
-import DefaultButton from "../shared/buttons/base-button";
-import { Register } from "../../services/register";
 import BaseButton from "../shared/buttons/base-button";
+import { Register } from "../../services/register";
+
 //STYLES
 import * as S from "./styles";
+import { EyeFill, EyeSlashFill } from "@styled-icons/bootstrap"
 
 //UTILS
 import { FORM_MESSAGE } from "../../utils/enums/form-message";
 
 const regexPassword =
   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-const MAX_FILE_SIZE = 5000000; // Fazer um refine para limitar em 5mb
-
-const checkFileType = (file: File) => {
-  if (file?.name) {
-    const fileType = file.name.split(".").pop();
-    if (fileType === "" || fileType === "") return true;
-  }
-  return false;
-};
 
 const registerFormSchema = z
   .object({
@@ -48,8 +40,8 @@ const registerFormSchema = z
       .regex(regexPassword, FORM_MESSAGE.PASSWORD_RULE),
     confirm: z.string().min(8, FORM_MESSAGE.CONFIRM_PASSWORD),
     photo: z
-      .any()
-      .refine((file) => checkFileType(file), FORM_MESSAGE.IMAGE_FORMAT),
+      .instanceof(FileList).optional()
+      .transform((list ) => list && list.item(0))
   })
   .refine((data) => data.password === data.confirm, {
     message: FORM_MESSAGE.PASSWORD_CONFIRM_MATCH,
@@ -59,7 +51,9 @@ const registerFormSchema = z
 type registerFormData = z.infer<typeof registerFormSchema>;
 
 const RegisterForm = () => {
-  const [output, setOutput] = useState("");
+  const navigate = useNavigate()
+  const [ passwordIsOpen, setPasswordIsOpen ] = useState(false)
+  const [ confirmIsOpen, setConfirmIsOpen ] = useState(false)
 
   const {
     register,
@@ -70,9 +64,19 @@ const RegisterForm = () => {
   });
 
   const handleRegister = async (data: registerFormData) => {
-    setOutput(JSON.stringify(output, null, 2));
-    const result = await Register(data);
+    const { confirm, ...restData } = data
+    const result = await Register(restData);
+    if(!result.error) {
+      navigate("ENTIDADE /home")
+      console.log("Deu certo!")
+    } else {
+      console.log("Deu ruim!")
+    }
   };
+
+  const handlePassword = (name: "password" | "confirm") => {
+    name === "password" ? setPasswordIsOpen(!passwordIsOpen) : setConfirmIsOpen(!confirmIsOpen)
+  }
 
   return (
     <S.RegisterFormStyle onSubmit={handleSubmit(handleRegister)}>
@@ -85,6 +89,8 @@ const RegisterForm = () => {
           {...register("name")}
           type="text"
           placeholder="Nome"
+          error={errors.name ? true : false}
+          
         />
         {errors.name && (
           <S.BaseSmallFormStyle>{errors.name.message}</S.BaseSmallFormStyle>
@@ -99,6 +105,7 @@ const RegisterForm = () => {
           {...register("cpf")}
           type="text"
           placeholder="CPF"
+          error={errors.cpf ? true : false}
         />
         {errors.cpf && (
           <S.BaseSmallFormStyle>{errors.cpf.message}</S.BaseSmallFormStyle>
@@ -113,39 +120,48 @@ const RegisterForm = () => {
           {...register("email")}
           type="text"
           placeholder="Email"
+          error={errors.email ? true : false}
         />
         {errors.email && (
           <S.BaseSmallFormStyle>{errors.email.message}</S.BaseSmallFormStyle>
         )}
       </div>
 
-      <div className="first-section">
+      <S.PasswordSectionFormStyle>
         <label htmlFor="password" hidden>
           Senha
         </label>
         <S.BaseInputFormStyle
           {...register("password")}
-          type="password"
+          type={passwordIsOpen ? "text" : "password"}
           placeholder="Senha"
+          error={errors.password ? true : false}
         />
+        <div onClick={() => handlePassword("password")}>
+          {passwordIsOpen ? <EyeFill /> : <EyeSlashFill />}
+        </div>
         {errors.password && (
           <S.BaseSmallFormStyle>{errors.password.message}</S.BaseSmallFormStyle>
         )}
-      </div>
+      </S.PasswordSectionFormStyle>
 
-      <div className="first-section">
+      <S.PasswordSectionFormStyle className="first-section">
         <label htmlFor="confirm" hidden>
           Confirmar Senha
         </label>
         <S.BaseInputFormStyle
           {...register("confirm")}
-          type="password"
+          type={confirmIsOpen ? "text" : "password"}
           placeholder="Confirmar Senha"
+          error={errors.confirm ? true : false}
         />
+        <div onClick={() => handlePassword("confirm")}>
+          {confirmIsOpen ? <EyeFill /> : <EyeSlashFill />}
+        </div>
         {errors.confirm && (
           <S.BaseSmallFormStyle>{errors.confirm.message}</S.BaseSmallFormStyle>
         )}
-      </div>
+      </S.PasswordSectionFormStyle>
 
       <div className="first-section">
         <label htmlFor="photo" hidden>

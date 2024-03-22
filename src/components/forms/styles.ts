@@ -49,15 +49,20 @@ export const BaseTitleFormStyle = styled.h1`
   margin-bottom: 20px;
 `;
 
-export const BaseInputFormStyle = styled.input`
+export const BaseInputFormStyle = styled("input")<{error: boolean}>`
   width: 100%;
   height: ${(props) => props.theme.heights.imputs.sm};
   background-color: ${(props) => props.theme.colors.lightGrey200};
-  border: none;
+  border: ${(props) => props.error ? `1px solid ${props.theme.colors.lightRed100}` : "none"};
   border-radius: ${(props) => props.theme.radius.xl};
   padding: 0 20px;
   font-family: ${(props) => props.theme.fontFamily.Poppins};
   font-size: ${(props) => props.theme.fontSizes.md};
+
+  &:focus {
+    outline: none;
+    border: ${props => !props.error && "1px outset white"};
+  }
 `;
 
 export const BaseCheckboxFormStyle = styled.input`
@@ -88,4 +93,22 @@ export const BaseSmallFormStyle = styled.small`
   color: ${(props) => props.theme.colors.lightRed100};
 `;
 
+export const PasswordSectionFormStyle = styled.div`
+  position: relative;
+  height: 65px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  div {
+    position: absolute;
+    width: 25px;
+    margin-right: 10px;
+    top: 50%;
+    margin-top: -25px;
+    right: 10px;
+  }
+`;
+
 //Verificar como alterar a cor de quando preenche automático, atualmente está amarelo.
+//Verificar como alterar a cor de outline focus/target no input
