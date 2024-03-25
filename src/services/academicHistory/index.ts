@@ -19,7 +19,7 @@ export const GetAcademicHistory = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       academicHistory: response.data.academic,
@@ -27,7 +27,7 @@ export const GetAcademicHistory = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -51,7 +51,7 @@ export const GetAcademicHistories = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       academicHistories: response.data.academic,
@@ -59,7 +59,7 @@ export const GetAcademicHistories = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -83,7 +83,7 @@ export const CreateAcademicHistory = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       academicHistory: response.data.academic,
@@ -91,7 +91,7 @@ export const CreateAcademicHistory = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -115,7 +115,7 @@ export const UpdateAcademicHistory = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       academicHistory: response.data.academic,
@@ -123,7 +123,7 @@ export const UpdateAcademicHistory = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -147,7 +147,7 @@ export const DeleteAcademicHistory = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       academicHistory: response.data.academic,
@@ -155,7 +155,7 @@ export const DeleteAcademicHistory = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };

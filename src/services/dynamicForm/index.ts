@@ -19,7 +19,7 @@ export const GetDynamicForm = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       dynamicForm: response.data.form,
@@ -27,7 +27,7 @@ export const GetDynamicForm = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -51,7 +51,7 @@ export const GetDynamicForms = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       dynamicForms: response.data.forms,
@@ -59,7 +59,7 @@ export const GetDynamicForms = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -83,7 +83,7 @@ export const CreateDynamicForm = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       dynamicForm: response.data.form,
@@ -91,7 +91,7 @@ export const CreateDynamicForm = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -115,7 +115,7 @@ export const UpdateDynamicForm = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       dynamicForm: response.data.form,
@@ -123,7 +123,7 @@ export const UpdateDynamicForm = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -147,7 +147,7 @@ export const DeleteDynamicForm = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       dynamicForm: response.data.form,
@@ -155,7 +155,7 @@ export const DeleteDynamicForm = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };

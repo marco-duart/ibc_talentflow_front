@@ -13,14 +13,14 @@ export const BanUser = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
     };
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };

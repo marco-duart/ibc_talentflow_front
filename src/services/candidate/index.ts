@@ -14,7 +14,7 @@ export const GetCandidate = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       candidate: response.data.candidate,
@@ -22,7 +22,7 @@ export const GetCandidate = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -46,7 +46,7 @@ export const GetAllCandidates = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       candidates: response.data.candidates,
@@ -55,7 +55,7 @@ export const GetAllCandidates = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -79,7 +79,7 @@ export const CreateCandidate = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       candidate: response.data.candidate,
@@ -87,7 +87,7 @@ export const CreateCandidate = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };

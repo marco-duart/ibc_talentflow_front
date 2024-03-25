@@ -17,7 +17,7 @@ export const GetSkills = async (params: GetSkillsDTO.IParams) => {
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       skills: response.data.skill,
@@ -25,7 +25,7 @@ export const GetSkills = async (params: GetSkillsDTO.IParams) => {
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -47,7 +47,7 @@ export const CreateSkill = async (params: CreateSkillDTO.IParams) => {
     });
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       skill: response.data.skill,
@@ -55,7 +55,7 @@ export const CreateSkill = async (params: CreateSkillDTO.IParams) => {
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -77,7 +77,7 @@ export const DeleteSkill = async (params: DeleteSkillDTO.IParams) => {
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       skill: response.data.skill,
@@ -85,7 +85,7 @@ export const DeleteSkill = async (params: DeleteSkillDTO.IParams) => {
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -107,7 +107,7 @@ export const AssignSkill = async (params: AssignSkillDTO.IParams) => {
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       skill: response.data.skill,
@@ -115,7 +115,7 @@ export const AssignSkill = async (params: AssignSkillDTO.IParams) => {
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -137,7 +137,7 @@ export const RemoveSkill = async (params: RemoveSkillDTO.IParams) => {
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       skill: response.data.skill,
@@ -145,7 +145,7 @@ export const RemoveSkill = async (params: RemoveSkillDTO.IParams) => {
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };

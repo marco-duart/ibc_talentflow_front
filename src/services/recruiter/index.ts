@@ -13,7 +13,7 @@ export const GetRecruiter = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       recruiter: response.data.recruiter,
@@ -21,7 +21,7 @@ export const GetRecruiter = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -45,7 +45,7 @@ export const CreateRecruiter = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       recruiter: response.data.recruiter,
@@ -53,7 +53,7 @@ export const CreateRecruiter = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };

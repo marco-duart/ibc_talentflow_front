@@ -19,7 +19,7 @@ export const GetKnowledges = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       knowledges: response.data.knowledge,
@@ -27,7 +27,7 @@ export const GetKnowledges = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -51,7 +51,7 @@ export const CreateKnowledge = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       knowledge: response.data.knowledge,
@@ -59,7 +59,7 @@ export const CreateKnowledge = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -83,7 +83,7 @@ export const DeleteKnowledge = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       knowledge: response.data.knowledge,
@@ -91,7 +91,7 @@ export const DeleteKnowledge = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -115,7 +115,7 @@ export const AssignKnowledge = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       knowledge: response.data.knowledge,
@@ -123,7 +123,7 @@ export const AssignKnowledge = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -147,7 +147,7 @@ export const RemoveKnowledge = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       knowledge: response.data.knowledge,
@@ -155,7 +155,7 @@ export const RemoveKnowledge = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };

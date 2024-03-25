@@ -19,7 +19,7 @@ export const GetHiringProcess = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       hiringProcess: response.data.hiring,
@@ -27,7 +27,7 @@ export const GetHiringProcess = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -51,7 +51,7 @@ export const GetHiringProcesses = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       hiringProcesses: response.data.hirings,
@@ -59,7 +59,7 @@ export const GetHiringProcesses = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -83,7 +83,7 @@ export const CreateHiringProcess = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       hiringProcess: response.data.hiring,
@@ -91,7 +91,7 @@ export const CreateHiringProcess = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -115,7 +115,7 @@ export const UpdateHiringProcess = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       hiringProcess: response.data.hiring,
@@ -123,7 +123,7 @@ export const UpdateHiringProcess = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -147,7 +147,7 @@ export const DeleteHiringProcess = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       hiringProcess: response.data.hiring,
@@ -155,7 +155,7 @@ export const DeleteHiringProcess = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };

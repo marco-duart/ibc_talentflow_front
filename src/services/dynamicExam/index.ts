@@ -19,7 +19,7 @@ export const GetDynamicExam = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       dynamicExam: response.data.exam,
@@ -27,7 +27,7 @@ export const GetDynamicExam = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -51,7 +51,7 @@ export const GetDynamicExams = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       dynamicExams: response.data.exams,
@@ -59,7 +59,7 @@ export const GetDynamicExams = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -83,7 +83,7 @@ export const CreateDynamicExam = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       dynamicExam: response.data.exam,
@@ -91,7 +91,7 @@ export const CreateDynamicExam = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -115,7 +115,7 @@ export const UpdateDynamicExam = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       dynamicExam: response.data.exam,
@@ -123,7 +123,7 @@ export const UpdateDynamicExam = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -147,7 +147,7 @@ export const DeleteDynamicExam = async (
     );
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
       dynamicExam: response.data.exam,
@@ -155,7 +155,7 @@ export const DeleteDynamicExam = async (
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };

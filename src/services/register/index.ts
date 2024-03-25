@@ -18,14 +18,14 @@ export const Register = async (params: RegisterDTO.IParams) => {
     const response = await api.post<RegisterDTO.IResponse>("/users", params, { headers: {"Content-Type": "multipart/form-data"} });
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code,
     }
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -43,7 +43,7 @@ export const LoginAPI = async (params: LoginAPIDTO.IParams) => {
     const response = await api.post<LoginAPIDTO.IResponse>("/users/login", params);
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: "CODIGO",
       user: response.data,
@@ -51,7 +51,7 @@ export const LoginAPI = async (params: LoginAPIDTO.IParams) => {
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -70,14 +70,14 @@ export const LoggedUser = async (params: LoggedUserDTO.IParams) => {
     const response = await api.post<LoggedUserDTO.IResponse>('/users/me', { headers: { Authorization: token } })
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       user: response.data
     }
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -95,14 +95,14 @@ export const ForgetPassword = async (params: ForgetPasswordDTO.IParams) => {
     const response = await api.post<ForgetPasswordDTO.IResponse>('/users/forget-password', params)
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code
     }
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -120,14 +120,14 @@ export const ChangePassword = async (params: ChangePasswordDTO.IParams) => {
     const response = await api.post<ChangePasswordDTO.IResponse>('/users/reset-password', params)
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code
     }
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -145,14 +145,14 @@ export const GetToken = async (params: GetTokenDTO.IParams) => {
     const response = await api.post<GetTokenDTO.IResponse>('/users/resend-token', params)
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code
     }
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -171,14 +171,14 @@ export const ConfirmAccount = async (params: ConfirmAccountDTO.IParams) => {
     const response = await api.post<ConfirmAccountDTO.IResponse>(`/users/confirm/${id}`, { params: restParams })
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code
     }
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -196,14 +196,14 @@ export const EmailAvailability = async (params: EmailAvailabilityDTO.IParams) =>
     const response = await api.post<EmailAvailabilityDTO.IResponse>('/users/email', params)
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code
     }
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };
@@ -221,14 +221,14 @@ export const CpfAvailability = async (params: CpfAvailabilityDTO.IParams) => {
     const response = await api.post<CpfAvailabilityDTO.IResponse>('/users/cpf', params)
 
     return {
-      error: false,
+      success: true,
       message: "MESSAGE",
       code: response.data.code
     }
   } catch (error) {
     if (isAxiosError(error)) {
       return {
-        error: true,
+        success: false,
         message: "MESSAGE",
         code: "CODIGO",
       };

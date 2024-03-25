@@ -1,11 +1,10 @@
 //NATIVE
-import { useState } from "react";
+import { useEffect, useState } from "react";
 //LIBRARIES
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate } from "react-router-dom";
-import useLocalStorage from "react-localstorage-hook";
 //COMPONENTS
 import BaseButton from "../shared/buttons/base-button";
 import { LoginAPI } from "../../services/register";
@@ -14,6 +13,7 @@ import * as S from "./styles";
 import { EyeFill, EyeSlashFill } from "@styled-icons/bootstrap"
 //UTILS
 import { FORM_MESSAGE } from "../../utils/enums/form-message";
+import { useUserContext } from "../../hooks/use-user-context";
 
 const loginFormSchema = z.object({
   email: z
@@ -28,13 +28,14 @@ const loginFormSchema = z.object({
 type loginFormData = z.infer<typeof loginFormSchema>;
 
 const LoginForm = () => {
-  // const [values, setValue] = useLocalStorage("remenber", false);
+  const { updateUser } = useUserContext();
   const [passwordIsOpen, setPasswordIsOpen] = useState(false)
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<loginFormData>({
     resolver: zodResolver(loginFormSchema),
   });
@@ -42,24 +43,39 @@ const LoginForm = () => {
   const handleLogin = async (data: loginFormData) => {
     const { remember, ...restData } = data
     
-    // handleLocalStorage(remember)
+    remember ? handleLocalStorage(data.email) : handleLocalStorage()
 
     const result = await LoginAPI(restData);
 
-    if (!result.error) {
-      navigate(" ENTIDADE /home")
+    if (result.success && result.user?.token) {
+      const { token, ...userData } = result.user
+      updateUser(userData, token)
+      navigate("/user")
     } else {
       console.log("Deu ruim!")
     }
   };
 
-  // const handleLocalStorage = (remember: boolean) => {
-  //   setValue("remember", remember)
-  // }
+  const handleLocalStorage = (email?: string) => {
+    if(email) {
+      localStorage.setItem("ibc-tf-remembered-email", email)
+    } else {
+      localStorage.removeItem("ibc-tf-remembered-email")
+    }
+  }
 
   const handlePassword = () => {
     setPasswordIsOpen(!passwordIsOpen)
   }
+
+  useEffect(() => {
+    const rememberedEmail = localStorage.getItem("ibc-tf-remembered-email")
+
+    if(rememberedEmail) {
+      setValue("remember", true)
+      setValue("email", rememberedEmail)
+    }
+  }, [])
 
   return (
     <S.LoginFormStyle onSubmit={handleSubmit(handleLogin)}>
