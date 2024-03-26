@@ -8,9 +8,7 @@ import {
   DeleteCompanyDTO,
 } from "./DTO";
 
-export const GetCompany = async (
-  params: GetCompanyDTO.IParams
-) => {
+export const GetCompany = async (params: GetCompanyDTO.IParams) => {
   try {
     const { id, token } = params;
     const response = await api.get<GetCompanyDTO.IResponse>(
@@ -21,7 +19,6 @@ export const GetCompany = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       company: response.data.company,
     };
   } catch (error) {
@@ -33,16 +30,14 @@ export const GetCompany = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
   }
 };
 
-export const GetCompanies = async (
-  params: GetCompaniesDTO.IParams
-) => {
+export const GetCompanies = async (params: GetCompaniesDTO.IParams) => {
   try {
     const { token } = params;
     const response = await api.get<GetCompaniesDTO.IResponse>(
@@ -53,7 +48,6 @@ export const GetCompanies = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       companies: response.data.companies,
     };
   } catch (error) {
@@ -65,16 +59,14 @@ export const GetCompanies = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
   }
 };
 
-export const CreateCompany = async (
-  params: CreateCompanyDTO.IParams
-) => {
+export const CreateCompany = async (params: CreateCompanyDTO.IParams) => {
   try {
     const { token, ...restParams } = params;
     const response = await api.post<CreateCompanyDTO.IResponse>(
@@ -85,7 +77,6 @@ export const CreateCompany = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       company: response.data.company,
     };
   } catch (error) {
@@ -97,16 +88,14 @@ export const CreateCompany = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
   }
 };
 
-export const UpdateCompany = async (
-  params: UpdateCompanyDTO.IParams
-) => {
+export const UpdateCompany = async (params: UpdateCompanyDTO.IParams) => {
   try {
     const { id, token, ...restParams } = params;
     const response = await api.patch<UpdateCompanyDTO.IResponse>(
@@ -117,7 +106,6 @@ export const UpdateCompany = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       company: response.data.company,
     };
   } catch (error) {
@@ -129,16 +117,14 @@ export const UpdateCompany = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
   }
 };
 
-export const DeleteCompany = async (
-  params: DeleteCompanyDTO.IParams
-) => {
+export const DeleteCompany = async (params: DeleteCompanyDTO.IParams) => {
   try {
     const { id, token } = params;
     const response = await api.delete<DeleteCompanyDTO.IResponse>(
@@ -149,7 +135,6 @@ export const DeleteCompany = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       company: response.data.company,
     };
   } catch (error) {
@@ -161,7 +146,7 @@ export const DeleteCompany = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };

@@ -8,9 +8,7 @@ import {
   DeleteHiringProcessDTO,
 } from "./DTO";
 
-export const GetHiringProcess = async (
-  params: GetHiringProcessDTO.IParams
-) => {
+export const GetHiringProcess = async (params: GetHiringProcessDTO.IParams) => {
   try {
     const { id, token } = params;
     const response = await api.get<GetHiringProcessDTO.IResponse>(
@@ -21,7 +19,6 @@ export const GetHiringProcess = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       hiringProcess: response.data.hiring,
     };
   } catch (error) {
@@ -33,7 +30,7 @@ export const GetHiringProcess = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -53,7 +50,6 @@ export const GetHiringProcesses = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       hiringProcesses: response.data.hirings,
     };
   } catch (error) {
@@ -65,7 +61,7 @@ export const GetHiringProcesses = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -85,7 +81,6 @@ export const CreateHiringProcess = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       hiringProcess: response.data.hiring,
     };
   } catch (error) {
@@ -97,7 +92,7 @@ export const CreateHiringProcess = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -117,7 +112,6 @@ export const UpdateHiringProcess = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       hiringProcess: response.data.hiring,
     };
   } catch (error) {
@@ -129,7 +123,7 @@ export const UpdateHiringProcess = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -149,7 +143,6 @@ export const DeleteHiringProcess = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       hiringProcess: response.data.hiring,
     };
   } catch (error) {
@@ -161,7 +154,7 @@ export const DeleteHiringProcess = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };

@@ -21,7 +21,6 @@ export const GetProfessionalLink = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       professionalLink: response.data.professional,
     };
   } catch (error) {
@@ -33,7 +32,7 @@ export const GetProfessionalLink = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -53,7 +52,6 @@ export const GetProfessionalLinks = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       professionalLinks: response.data.professional,
     };
   } catch (error) {
@@ -65,7 +63,7 @@ export const GetProfessionalLinks = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -85,7 +83,6 @@ export const CreateProfessionalLink = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       professionalLink: response.data.professional,
     };
   } catch (error) {
@@ -97,7 +94,7 @@ export const CreateProfessionalLink = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -117,7 +114,6 @@ export const UpdateProfessionalLink = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       professionalLink: response.data.professional,
     };
   } catch (error) {
@@ -129,7 +125,7 @@ export const UpdateProfessionalLink = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -149,7 +145,6 @@ export const DeleteProfessionalLink = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       professionalLink: response.data.professional,
     };
   } catch (error) {
@@ -161,7 +156,7 @@ export const DeleteProfessionalLink = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };

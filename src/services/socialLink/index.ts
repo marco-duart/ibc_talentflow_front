@@ -8,9 +8,7 @@ import {
   DeleteSocialLinkDTO,
 } from "./DTO";
 
-export const GetSocialLink = async (
-  params: GetSocialLinkDTO.IParams
-) => {
+export const GetSocialLink = async (params: GetSocialLinkDTO.IParams) => {
   try {
     const { id, token } = params;
     const response = await api.get<GetSocialLinkDTO.IResponse>(
@@ -21,7 +19,6 @@ export const GetSocialLink = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       socialLink: response.data.social,
     };
   } catch (error) {
@@ -33,16 +30,14 @@ export const GetSocialLink = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
   }
 };
 
-export const GetSocialLinks = async (
-  params: GetSocialLinksDTO.IParams
-) => {
+export const GetSocialLinks = async (params: GetSocialLinksDTO.IParams) => {
   try {
     const { token } = params;
     const response = await api.get<GetSocialLinksDTO.IResponse>(
@@ -53,7 +48,6 @@ export const GetSocialLinks = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       socialLinks: response.data.social,
     };
   } catch (error) {
@@ -65,16 +59,14 @@ export const GetSocialLinks = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
   }
 };
 
-export const CreateSocialLink = async (
-  params: CreateSocialLinkDTO.IParams
-) => {
+export const CreateSocialLink = async (params: CreateSocialLinkDTO.IParams) => {
   try {
     const { token, ...restParams } = params;
     const response = await api.post<CreateSocialLinkDTO.IResponse>(
@@ -85,7 +77,6 @@ export const CreateSocialLink = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       socialLink: response.data.social,
     };
   } catch (error) {
@@ -97,16 +88,14 @@ export const CreateSocialLink = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
   }
 };
 
-export const UpdateSocialLink = async (
-  params: UpdateSocialLinkDTO.IParams
-) => {
+export const UpdateSocialLink = async (params: UpdateSocialLinkDTO.IParams) => {
   try {
     const { id, token, ...restParams } = params;
     const response = await api.patch<UpdateSocialLinkDTO.IResponse>(
@@ -117,7 +106,6 @@ export const UpdateSocialLink = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       socialLink: response.data.social,
     };
   } catch (error) {
@@ -129,16 +117,14 @@ export const UpdateSocialLink = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
   }
 };
 
-export const DeleteSocialLink = async (
-  params: DeleteSocialLinkDTO.IParams
-) => {
+export const DeleteSocialLink = async (params: DeleteSocialLinkDTO.IParams) => {
   try {
     const { id, token } = params;
     const response = await api.delete<DeleteSocialLinkDTO.IResponse>(
@@ -149,7 +135,6 @@ export const DeleteSocialLink = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       socialLink: response.data.social,
     };
   } catch (error) {
@@ -161,7 +146,7 @@ export const DeleteSocialLink = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };

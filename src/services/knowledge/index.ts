@@ -8,9 +8,7 @@ import {
   RemoveKnowledgeDTO,
 } from "./DTO";
 
-export const GetKnowledges = async (
-  params: GetKnowledgesDTO.IParams
-) => {
+export const GetKnowledges = async (params: GetKnowledgesDTO.IParams) => {
   try {
     const { prefix, token } = params;
     const response = await api.get<GetKnowledgesDTO.IResponse>(
@@ -21,7 +19,6 @@ export const GetKnowledges = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       knowledges: response.data.knowledge,
     };
   } catch (error) {
@@ -33,16 +30,14 @@ export const GetKnowledges = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
   }
 };
 
-export const CreateKnowledge = async (
-  params: CreateKnowledgeDTO.IParams
-) => {
+export const CreateKnowledge = async (params: CreateKnowledgeDTO.IParams) => {
   try {
     const { token, ...restParams } = params;
     const response = await api.post<CreateKnowledgeDTO.IResponse>(
@@ -53,7 +48,6 @@ export const CreateKnowledge = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       knowledge: response.data.knowledge,
     };
   } catch (error) {
@@ -65,16 +59,14 @@ export const CreateKnowledge = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
   }
 };
 
-export const DeleteKnowledge = async (
-  params: DeleteKnowledgeDTO.IParams
-) => {
+export const DeleteKnowledge = async (params: DeleteKnowledgeDTO.IParams) => {
   try {
     const { id, token } = params;
     const response = await api.delete<DeleteKnowledgeDTO.IResponse>(
@@ -85,7 +77,6 @@ export const DeleteKnowledge = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       knowledge: response.data.knowledge,
     };
   } catch (error) {
@@ -97,16 +88,14 @@ export const DeleteKnowledge = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
   }
 };
 
-export const AssignKnowledge = async (
-  params: AssignKnowledgeDTO.IParams
-) => {
+export const AssignKnowledge = async (params: AssignKnowledgeDTO.IParams) => {
   try {
     const { token, ...restParams } = params;
     const response = await api.post<AssignKnowledgeDTO.IResponse>(
@@ -117,7 +106,6 @@ export const AssignKnowledge = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       knowledge: response.data.knowledge,
     };
   } catch (error) {
@@ -129,16 +117,14 @@ export const AssignKnowledge = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
   }
 };
 
-export const RemoveKnowledge = async (
-  params: RemoveKnowledgeDTO.IParams
-) => {
+export const RemoveKnowledge = async (params: RemoveKnowledgeDTO.IParams) => {
   try {
     const { id, token } = params;
     const response = await api.delete<RemoveKnowledgeDTO.IResponse>(
@@ -149,7 +135,6 @@ export const RemoveKnowledge = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       knowledge: response.data.knowledge,
     };
   } catch (error) {
@@ -161,7 +146,7 @@ export const RemoveKnowledge = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };

@@ -49,11 +49,12 @@ export const BaseTitleFormStyle = styled.h1`
   margin-bottom: 20px;
 `;
 
-export const BaseInputFormStyle = styled("input")<{error: boolean}>`
+export const BaseInputFormStyle = styled("input")<{ error: boolean }>`
   width: 100%;
   height: ${(props) => props.theme.heights.imputs.sm};
   background-color: ${(props) => props.theme.colors.lightGrey200};
-  border: ${(props) => props.error ? `1px solid ${props.theme.colors.lightRed100}` : "none"};
+  border: ${(props) =>
+    props.error ? `1px solid ${props.theme.colors.lightRed100}` : "none"};
   border-radius: ${(props) => props.theme.radius.xl};
   padding: 0 20px;
   font-family: ${(props) => props.theme.fontFamily.Poppins};
@@ -61,7 +62,7 @@ export const BaseInputFormStyle = styled("input")<{error: boolean}>`
 
   &:focus {
     outline: none;
-    border: ${props => !props.error && "1px outset white"};
+    border: ${(props) => !props.error && "1px outset white"};
   }
 `;
 

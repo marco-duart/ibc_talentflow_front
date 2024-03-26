@@ -21,7 +21,6 @@ export const GetEmploymentHistory = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       employmentHistory: response.data.employment,
     };
   } catch (error) {
@@ -33,7 +32,7 @@ export const GetEmploymentHistory = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -53,7 +52,6 @@ export const GetEmploymentHistories = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       EmploymentHistories: response.data.employment,
     };
   } catch (error) {
@@ -65,7 +63,7 @@ export const GetEmploymentHistories = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -85,7 +83,6 @@ export const CreateEmploymentHistory = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       employmentHistory: response.data.employment,
     };
   } catch (error) {
@@ -97,7 +94,7 @@ export const CreateEmploymentHistory = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -117,7 +114,6 @@ export const UpdateEmploymentHistory = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       employmentHistory: response.data.employment,
     };
   } catch (error) {
@@ -129,7 +125,7 @@ export const UpdateEmploymentHistory = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -149,7 +145,6 @@ export const DeleteEmploymentHistory = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       employmentHistory: response.data.employment,
     };
   } catch (error) {
@@ -161,7 +156,7 @@ export const DeleteEmploymentHistory = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };

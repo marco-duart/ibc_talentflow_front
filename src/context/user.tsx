@@ -1,32 +1,36 @@
-import React, { createContext, useEffect, useState } from 'react'
-import { LoggedUser } from '../services/register';
+import React, { createContext, useEffect, useState } from "react";
+import { LoggedUser } from "../services/register";
 
 type User = {
   id: number;
   name: string;
-  role: 'ti' | 'admin' | 'user'
+  role: "ti" | "admin" | "user";
   photo_url: string;
-}
+};
 
 type State = {
   user: User | null;
-}
+};
 
 type UserContext = {
-    user: User | null;
-    updateUser: (user: User, token: string) => void;
-    logout: () => void;
-};
-  
-type Props = {
-    children: React.ReactNode;
+  user: User | null;
+  updateUser: (user: User, token: string) => void;
+  logout: () => void;
 };
 
-export const UserContext = createContext<UserContext>({ user: null, updateUser: () => {}, logout: () => {}})
+type Props = {
+  children: React.ReactNode;
+};
+
+export const UserContext = createContext<UserContext>({
+  user: null,
+  updateUser: () => {},
+  logout: () => {},
+});
 
 export const UserContextProvider: React.FC<Props> = ({ children }) => {
   const [state, setState] = useState<State>({
-    user: null
+    user: null,
   });
 
   const autoLogin = async () => {
@@ -46,7 +50,7 @@ export const UserContextProvider: React.FC<Props> = ({ children }) => {
   const updateUser = (user: User, token: string) => {
     localStorage.setItem("ibc-tf-token", token);
     setState({
-      user
+      user,
     });
   };
 
@@ -54,7 +58,7 @@ export const UserContextProvider: React.FC<Props> = ({ children }) => {
     localStorage.removeItem("ibc-tf-token");
 
     setState({
-      user: null
+      user: null,
     });
   };
 
@@ -64,13 +68,15 @@ export const UserContextProvider: React.FC<Props> = ({ children }) => {
     }
   }, []);
 
-    return (
-        <UserContext.Provider value={{
-          user: state.user,
-          updateUser,
-          logout: cleanUser
-        }}>
-            {children}
-        </UserContext.Provider>
-    )
-}
+  return (
+    <UserContext.Provider
+      value={{
+        user: state.user,
+        updateUser,
+        logout: cleanUser,
+      }}
+    >
+      {children}
+    </UserContext.Provider>
+  );
+};

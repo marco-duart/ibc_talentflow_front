@@ -8,9 +8,7 @@ import {
   DeleteDocumentDTO,
 } from "./DTO";
 
-export const GetDocument = async (
-  params: GetDocumentDTO.IParams
-) => {
+export const GetDocument = async (params: GetDocumentDTO.IParams) => {
   try {
     const { id, token } = params;
     const response = await api.get<GetDocumentDTO.IResponse>(
@@ -21,7 +19,6 @@ export const GetDocument = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       document: response.data.document,
     };
   } catch (error) {
@@ -33,16 +30,14 @@ export const GetDocument = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
   }
 };
 
-export const GetDocuments = async (
-  params: GetDocumentsDTO.IParams
-) => {
+export const GetDocuments = async (params: GetDocumentsDTO.IParams) => {
   try {
     const { token } = params;
     const response = await api.get<GetDocumentsDTO.IResponse>(
@@ -53,7 +48,6 @@ export const GetDocuments = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       documents: response.data.document,
     };
   } catch (error) {
@@ -65,16 +59,14 @@ export const GetDocuments = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
   }
 };
 
-export const CreateDocument = async (
-  params: CreateDocumentDTO.IParams
-) => {
+export const CreateDocument = async (params: CreateDocumentDTO.IParams) => {
   try {
     const { token, ...restParams } = params;
     const response = await api.post<CreateDocumentDTO.IResponse>(
@@ -85,7 +77,6 @@ export const CreateDocument = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       document: response.data.document,
     };
   } catch (error) {
@@ -97,16 +88,14 @@ export const CreateDocument = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
   }
 };
 
-export const UpdateDocument = async (
-  params: UpdateDocumentDTO.IParams
-) => {
+export const UpdateDocument = async (params: UpdateDocumentDTO.IParams) => {
   try {
     const { id, token, ...restParams } = params;
     const response = await api.patch<UpdateDocumentDTO.IResponse>(
@@ -117,7 +106,6 @@ export const UpdateDocument = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       document: response.data.document,
     };
   } catch (error) {
@@ -129,16 +117,14 @@ export const UpdateDocument = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
   }
 };
 
-export const DeleteDocument = async (
-  params: DeleteDocumentDTO.IParams
-) => {
+export const DeleteDocument = async (params: DeleteDocumentDTO.IParams) => {
   try {
     const { id, token } = params;
     const response = await api.delete<DeleteDocumentDTO.IResponse>(
@@ -149,7 +135,6 @@ export const DeleteDocument = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       document: response.data.document,
     };
   } catch (error) {
@@ -161,7 +146,7 @@ export const DeleteDocument = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };

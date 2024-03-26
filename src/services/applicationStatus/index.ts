@@ -19,7 +19,6 @@ export const GetApplication = async (params: GetApplicationDTO.IParams) => {
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       application: response.data.application,
     };
   } catch (error) {
@@ -31,7 +30,7 @@ export const GetApplication = async (params: GetApplicationDTO.IParams) => {
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -49,7 +48,6 @@ export const GetApplications = async (params: GetApplicationsDTO.IParams) => {
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       applications: response.data.applications,
       pageable: response.data.pageable,
     };
@@ -62,7 +60,7 @@ export const GetApplications = async (params: GetApplicationsDTO.IParams) => {
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -82,7 +80,6 @@ export const CreateApplication = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       application: response.data.application,
     };
   } catch (error) {
@@ -94,7 +91,7 @@ export const CreateApplication = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -114,7 +111,6 @@ export const UpdateApplication = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       application: response.data.application,
     };
   } catch (error) {
@@ -126,7 +122,7 @@ export const UpdateApplication = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -146,7 +142,6 @@ export const DeleteApplication = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       application: response.data.application,
     };
   } catch (error) {
@@ -158,7 +153,7 @@ export const DeleteApplication = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };

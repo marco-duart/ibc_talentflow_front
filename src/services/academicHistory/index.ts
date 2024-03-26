@@ -21,7 +21,6 @@ export const GetAcademicHistory = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       academicHistory: response.data.academic,
     };
   } catch (error) {
@@ -33,7 +32,7 @@ export const GetAcademicHistory = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -53,7 +52,6 @@ export const GetAcademicHistories = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       academicHistories: response.data.academic,
     };
   } catch (error) {
@@ -65,7 +63,7 @@ export const GetAcademicHistories = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -85,7 +83,6 @@ export const CreateAcademicHistory = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       academicHistory: response.data.academic,
     };
   } catch (error) {
@@ -97,7 +94,7 @@ export const CreateAcademicHistory = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -117,7 +114,6 @@ export const UpdateAcademicHistory = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       academicHistory: response.data.academic,
     };
   } catch (error) {
@@ -129,7 +125,7 @@ export const UpdateAcademicHistory = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -149,7 +145,6 @@ export const DeleteAcademicHistory = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       academicHistory: response.data.academic,
     };
   } catch (error) {
@@ -161,7 +156,7 @@ export const DeleteAcademicHistory = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };

@@ -14,14 +14,15 @@ import {
 
 export const Register = async (params: RegisterDTO.IParams) => {
   try {
-    console.log(params)
-    const response = await api.post<RegisterDTO.IResponse>("/users", params, { headers: {"Content-Type": "multipart/form-data"} });
+    console.log(params);
+    const response = await api.post<RegisterDTO.IResponse>("/users", params, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
 
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
-    }
+    };
   } catch (error) {
     if (isAxiosError(error)) {
       return {
@@ -31,7 +32,7 @@ export const Register = async (params: RegisterDTO.IParams) => {
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -40,7 +41,10 @@ export const Register = async (params: RegisterDTO.IParams) => {
 
 export const LoginAPI = async (params: LoginAPIDTO.IParams) => {
   try {
-    const response = await api.post<LoginAPIDTO.IResponse>("/users/login", params);
+    const response = await api.post<LoginAPIDTO.IResponse>(
+      "/users/login",
+      params
+    );
 
     return {
       success: true,
@@ -57,7 +61,7 @@ export const LoginAPI = async (params: LoginAPIDTO.IParams) => {
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -66,14 +70,16 @@ export const LoginAPI = async (params: LoginAPIDTO.IParams) => {
 
 export const LoggedUser = async (params: LoggedUserDTO.IParams) => {
   try {
-    const { token } = params
-    const response = await api.post<LoggedUserDTO.IResponse>('/users/me', { headers: { Authorization: token } })
+    const { token } = params;
+    const response = await api.post<LoggedUserDTO.IResponse>("/users/me", {
+      headers: { Authorization: token },
+    });
 
     return {
       success: true,
       message: "MESSAGE",
-      user: response.data
-    }
+      user: response.data,
+    };
   } catch (error) {
     if (isAxiosError(error)) {
       return {
@@ -83,7 +89,7 @@ export const LoggedUser = async (params: LoggedUserDTO.IParams) => {
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -92,13 +98,15 @@ export const LoggedUser = async (params: LoggedUserDTO.IParams) => {
 
 export const ForgetPassword = async (params: ForgetPasswordDTO.IParams) => {
   try {
-    const response = await api.post<ForgetPasswordDTO.IResponse>('/users/forget-password', params)
+    const response = await api.post<ForgetPasswordDTO.IResponse>(
+      "/users/forget-password",
+      params
+    );
 
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code
-    }
+    };
   } catch (error) {
     if (isAxiosError(error)) {
       return {
@@ -108,7 +116,7 @@ export const ForgetPassword = async (params: ForgetPasswordDTO.IParams) => {
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -117,13 +125,15 @@ export const ForgetPassword = async (params: ForgetPasswordDTO.IParams) => {
 
 export const ChangePassword = async (params: ChangePasswordDTO.IParams) => {
   try {
-    const response = await api.post<ChangePasswordDTO.IResponse>('/users/reset-password', params)
+    const response = await api.post<ChangePasswordDTO.IResponse>(
+      "/users/reset-password",
+      params
+    );
 
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code
-    }
+    };
   } catch (error) {
     if (isAxiosError(error)) {
       return {
@@ -133,7 +143,7 @@ export const ChangePassword = async (params: ChangePasswordDTO.IParams) => {
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -142,13 +152,15 @@ export const ChangePassword = async (params: ChangePasswordDTO.IParams) => {
 
 export const GetToken = async (params: GetTokenDTO.IParams) => {
   try {
-    const response = await api.post<GetTokenDTO.IResponse>('/users/resend-token', params)
+    const response = await api.post<GetTokenDTO.IResponse>(
+      "/users/resend-token",
+      params
+    );
 
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code
-    }
+    };
   } catch (error) {
     if (isAxiosError(error)) {
       return {
@@ -158,7 +170,7 @@ export const GetToken = async (params: GetTokenDTO.IParams) => {
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -167,14 +179,16 @@ export const GetToken = async (params: GetTokenDTO.IParams) => {
 
 export const ConfirmAccount = async (params: ConfirmAccountDTO.IParams) => {
   try {
-    const { id, ...restParams } = params
-    const response = await api.post<ConfirmAccountDTO.IResponse>(`/users/confirm/${id}`, { params: restParams })
+    const { id, ...restParams } = params;
+    const response = await api.post<ConfirmAccountDTO.IResponse>(
+      `/users/confirm/${id}`,
+      { params: restParams }
+    );
 
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code
-    }
+    };
   } catch (error) {
     if (isAxiosError(error)) {
       return {
@@ -184,22 +198,26 @@ export const ConfirmAccount = async (params: ConfirmAccountDTO.IParams) => {
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
   }
 };
 
-export const EmailAvailability = async (params: EmailAvailabilityDTO.IParams) => {
+export const EmailAvailability = async (
+  params: EmailAvailabilityDTO.IParams
+) => {
   try {
-    const response = await api.post<EmailAvailabilityDTO.IResponse>('/users/email', params)
+    const response = await api.post<EmailAvailabilityDTO.IResponse>(
+      "/users/email",
+      params
+    );
 
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code
-    }
+    };
   } catch (error) {
     if (isAxiosError(error)) {
       return {
@@ -209,7 +227,7 @@ export const EmailAvailability = async (params: EmailAvailabilityDTO.IParams) =>
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -218,13 +236,15 @@ export const EmailAvailability = async (params: EmailAvailabilityDTO.IParams) =>
 
 export const CpfAvailability = async (params: CpfAvailabilityDTO.IParams) => {
   try {
-    const response = await api.post<CpfAvailabilityDTO.IResponse>('/users/cpf', params)
+    const response = await api.post<CpfAvailabilityDTO.IResponse>(
+      "/users/cpf",
+      params
+    );
 
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code
-    }
+    };
   } catch (error) {
     if (isAxiosError(error)) {
       return {
@@ -234,7 +254,7 @@ export const CpfAvailability = async (params: CpfAvailabilityDTO.IParams) => {
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };

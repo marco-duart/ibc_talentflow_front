@@ -8,9 +8,7 @@ import {
   DeleteDynamicExamDTO,
 } from "./DTO";
 
-export const GetDynamicExam = async (
-  params: GetDynamicExamDTO.IParams
-) => {
+export const GetDynamicExam = async (params: GetDynamicExamDTO.IParams) => {
   try {
     const { id, token } = params;
     const response = await api.get<GetDynamicExamDTO.IResponse>(
@@ -21,7 +19,6 @@ export const GetDynamicExam = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       dynamicExam: response.data.exam,
     };
   } catch (error) {
@@ -33,16 +30,14 @@ export const GetDynamicExam = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
   }
 };
 
-export const GetDynamicExams = async (
-  params: GetDynamicExamsDTO.IParams
-) => {
+export const GetDynamicExams = async (params: GetDynamicExamsDTO.IParams) => {
   try {
     const { token } = params;
     const response = await api.get<GetDynamicExamsDTO.IResponse>(
@@ -53,7 +48,6 @@ export const GetDynamicExams = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       dynamicExams: response.data.exams,
     };
   } catch (error) {
@@ -65,7 +59,7 @@ export const GetDynamicExams = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -85,7 +79,6 @@ export const CreateDynamicExam = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       dynamicExam: response.data.exam,
     };
   } catch (error) {
@@ -97,7 +90,7 @@ export const CreateDynamicExam = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -117,7 +110,6 @@ export const UpdateDynamicExam = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       dynamicExam: response.data.exam,
     };
   } catch (error) {
@@ -129,7 +121,7 @@ export const UpdateDynamicExam = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };
@@ -149,7 +141,6 @@ export const DeleteDynamicExam = async (
     return {
       success: true,
       message: "MESSAGE",
-      code: response.data.code,
       dynamicExam: response.data.exam,
     };
   } catch (error) {
@@ -161,7 +152,7 @@ export const DeleteDynamicExam = async (
       };
     }
     return {
-      error: true,
+      success: false,
       message: "MESSAGE",
       code: "CODIGO",
     };

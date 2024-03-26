@@ -7,9 +7,7 @@ export namespace RegisterDTO {
     photo?: File | null;
   }
   export interface IResponse {
-    error: boolean;
     message: string;
-    code: number;
   }
 }
 
@@ -21,7 +19,7 @@ export namespace LoginAPIDTO {
   export interface IResponse {
     id: number;
     name: string;
-    role: 'ti' | 'admin' | 'user'
+    role: "ti" | "admin" | "user";
     photo_url: string;
     token: string;
   }
@@ -34,7 +32,7 @@ export namespace LoggedUserDTO {
   export interface IResponse {
     id: number;
     name: string;
-    role: 'ti' | 'admin' | 'user'
+    role: "ti" | "admin" | "user";
     photo_url: string;
   }
 }
@@ -45,9 +43,7 @@ export namespace ForgetPasswordDTO {
     email: string;
   }
   export interface IResponse {
-    error: boolean;
     message: string;
-    code: number;
   }
 }
 
@@ -59,9 +55,7 @@ export namespace ChangePasswordDTO {
     password: string;
   }
   export interface IResponse {
-    error: boolean;
     message: string;
-    code: number;
   }
 }
 
@@ -71,9 +65,7 @@ export namespace GetTokenDTO {
     email: string;
   }
   export interface IResponse {
-    error: boolean;
     message: string;
-    code: number;
   }
 }
 
@@ -83,9 +75,7 @@ export namespace ConfirmAccountDTO {
     action_key: string;
   }
   export interface IResponse {
-    error: boolean;
     message: string;
-    code: number;
   }
 }
 
@@ -94,9 +84,7 @@ export namespace EmailAvailabilityDTO {
     email: string;
   }
   export interface IResponse {
-    error: boolean;
     message: string;
-    code: number;
   }
 }
 
@@ -105,8 +93,6 @@ export namespace CpfAvailabilityDTO {
     cpf: string;
   }
   export interface IResponse {
-    error: boolean;
     message: string;
-    code: number;
   }
 }

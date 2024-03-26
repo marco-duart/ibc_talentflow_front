@@ -10,7 +10,7 @@ import BaseButton from "../shared/buttons/base-button";
 import { LoginAPI } from "../../services/register";
 //STYLES
 import * as S from "./styles";
-import { EyeFill, EyeSlashFill } from "@styled-icons/bootstrap"
+import { EyeFill, EyeSlashFill } from "@styled-icons/bootstrap";
 //UTILS
 import { FORM_MESSAGE } from "../../utils/enums/form-message";
 import { useUserContext } from "../../hooks/use-user-context";
@@ -29,7 +29,7 @@ type loginFormData = z.infer<typeof loginFormSchema>;
 
 const LoginForm = () => {
   const { updateUser } = useUserContext();
-  const [passwordIsOpen, setPasswordIsOpen] = useState(false)
+  const [passwordIsOpen, setPasswordIsOpen] = useState(false);
   const navigate = useNavigate();
   const {
     register,
@@ -41,41 +41,42 @@ const LoginForm = () => {
   });
 
   const handleLogin = async (data: loginFormData) => {
-    const { remember, ...restData } = data
-    
-    remember ? handleLocalStorage(data.email) : handleLocalStorage()
+    const { remember, ...restData } = data;
+
+    remember ? handleLocalStorage(data.email) : handleLocalStorage();
 
     const result = await LoginAPI(restData);
 
     if (result.success && result.user?.token) {
-      const { token, ...userData } = result.user
-      updateUser(userData, token)
-      navigate("/user")
+      const { token, ...userData } = result.user;
+      updateUser(userData, token);
+      console.log(userData);
+      navigate("/user");
     } else {
-      console.log("Deu ruim!")
+      console.log("Deu ruim!");
     }
   };
 
   const handleLocalStorage = (email?: string) => {
-    if(email) {
-      localStorage.setItem("ibc-tf-remembered-email", email)
+    if (email) {
+      localStorage.setItem("ibc-tf-remembered-email", email);
     } else {
-      localStorage.removeItem("ibc-tf-remembered-email")
+      localStorage.removeItem("ibc-tf-remembered-email");
     }
-  }
+  };
 
   const handlePassword = () => {
-    setPasswordIsOpen(!passwordIsOpen)
-  }
+    setPasswordIsOpen(!passwordIsOpen);
+  };
 
   useEffect(() => {
-    const rememberedEmail = localStorage.getItem("ibc-tf-remembered-email")
+    const rememberedEmail = localStorage.getItem("ibc-tf-remembered-email");
 
-    if(rememberedEmail) {
-      setValue("remember", true)
-      setValue("email", rememberedEmail)
+    if (rememberedEmail) {
+      setValue("remember", true);
+      setValue("email", rememberedEmail);
     }
-  }, [])
+  }, []);
 
   return (
     <S.LoginFormStyle onSubmit={handleSubmit(handleLogin)}>
@@ -84,18 +85,32 @@ const LoginForm = () => {
         <label htmlFor="email" hidden>
           E-mail
         </label>
-        <S.BaseInputFormStyle {...register("email")} type="text" placeholder="Email" error={errors.email ? true : false}/>
-        {errors.email && <S.BaseSmallFormStyle>{errors.email.message}</S.BaseSmallFormStyle>}
+        <S.BaseInputFormStyle
+          {...register("email")}
+          type="text"
+          placeholder="Email"
+          error={errors.email ? true : false}
+        />
+        {errors.email && (
+          <S.BaseSmallFormStyle>{errors.email.message}</S.BaseSmallFormStyle>
+        )}
       </div>
       <S.PasswordSectionFormStyle>
         <label htmlFor="password" hidden>
           Senha
         </label>
-        <S.BaseInputFormStyle {...register("password")} type={passwordIsOpen ? "text" : "password"} placeholder="Senha" error={errors.password ? true : false}/>
+        <S.BaseInputFormStyle
+          {...register("password")}
+          type={passwordIsOpen ? "text" : "password"}
+          placeholder="Senha"
+          error={errors.password ? true : false}
+        />
         <div onClick={() => handlePassword()}>
           {passwordIsOpen ? <EyeFill /> : <EyeSlashFill />}
         </div>
-        {errors.password && <S.BaseSmallFormStyle>{errors.password.message}</S.BaseSmallFormStyle>}
+        {errors.password && (
+          <S.BaseSmallFormStyle>{errors.password.message}</S.BaseSmallFormStyle>
+        )}
       </S.PasswordSectionFormStyle>
       <div className="second-section">
         <label htmlFor="remember">Lembrar</label>
